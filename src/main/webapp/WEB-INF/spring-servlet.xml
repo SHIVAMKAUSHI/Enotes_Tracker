@@ -17,11 +17,18 @@
     <mvc:resources location="/WEB-INF/views/" mapping="/views/**"/>
 
     <context:component-scan base-package="notetracker"></context:component-scan>
+
    <bean name="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-       <property name="prefix" value="WEB-INF/views/"></property>
+       <property name="prefix" value="/WEB-INF/views/"></property>
        <property name="suffix" value=".jsp"></property>
 
    </bean>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/user/*"/>
+            <bean class="notetracker.config.AuthHandler"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName">
             <value>com.mysql.jdbc.Driver</value>
@@ -50,7 +57,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>notetracker.model.User</value>
-<!--                <value></value>-->
+                <value>notetracker.model.Notes</value>
             </list>
         </property>
     </bean>

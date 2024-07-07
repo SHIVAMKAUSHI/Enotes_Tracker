@@ -35,7 +35,7 @@
                     </form>
                 </div>
                 <div class="card-footer text-center">
-                    don't have an account <a href="register">register</a>
+                    don't have an account <a href="${pageContext.request.contextPath}/register">register</a>
                 </div>
             </div>
         </div>

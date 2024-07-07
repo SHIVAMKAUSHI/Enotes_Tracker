@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:c="http://www.w3.org/1999/html">
 <head>
     <%@include file="./base.jsp"%>
 </head>
@@ -16,21 +16,28 @@
             <div class="card">
                 <div class="card-header text-center">
                     <h3>Add Your Notes</h3>
+                    <c:if test="${not empty msg }">
+                        <p class="fs-1 fw-bold text-success">${msg}</p>
+                        <c:remove var="msg"/>
+                    </c:if>
                 </div>
                 <div class="card-body">
-                    <div class="form">
+                    <form class="form" action="${pageContext.request.contextPath}/user/saveNotes" method="post">
                         <div class="form-group ">
-                            <label for="">Enter Title</label>
-                            <input class="form-control" type="text" name="" id="">
+                            <label for="title">Title</label>
+                            <input class="form-control" type="text" name="title" id="title">
                         </div>
                         <div class="form-group mt-3">
-                            <label for="">Enter Description</label>
-                            <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                            <label for="description">Enter Qualification</label>
+                            <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
                         </div>
+
                         <button class="btn btn-primary mt-3 col-md-12" type="submit">Save</button>
-                    </div>
+
+                    </form>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

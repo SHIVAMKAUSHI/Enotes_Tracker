@@ -1,6 +1,7 @@
 package notetracker.controller;
 
 import notetracker.dao.UserDao;
+import notetracker.model.Notes;
 import notetracker.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,18 +31,7 @@ public class Home {
         return "login";
     }
 
-    @RequestMapping("/viewnotes")
-    public String viewNotes(){
-        return "view_notes";
-    }
-    @RequestMapping("/addnotes")
-    public String addNotes(){
-        return "add_notes";
-    }
-    @RequestMapping("/editnotes")
-    public String editNotes(){
-        return "edit_notes";
-    }
+
 
     @RequestMapping(path = "/registeruser" , method = RequestMethod.POST)
     public RedirectView registerUser(@ModelAttribute User user, HttpServletRequest request, HttpSession session) {
@@ -56,7 +46,7 @@ public class Home {
     public String loginUser(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session){
         User user = userDao.login(email, password);
         if(user!=null){
-            session.setAttribute("msg","User Login successfully");
+            session.setAttribute("userObj",user);
             return "redirect:/loginpage";
         }
         else {
@@ -67,8 +57,10 @@ public class Home {
     }
     @RequestMapping("/loginpage")
     public String loginPage(){
-        return "login_page";
+        return "profile";
     }
+
+
 }
 
 

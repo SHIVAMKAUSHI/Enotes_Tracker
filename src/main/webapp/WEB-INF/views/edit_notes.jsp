@@ -18,17 +18,17 @@
                     <h3>Edit Your Notes</h3>
                 </div>
                 <div class="card-body">
-                    <div class="form">
+                    <form class="form" action="${pageContext.request.contextPath}/user/updatenotes/${id}">
                         <div class="form-group ">
-                            <label for="">Enter Title</label>
-                            <input class="form-control" type="text" name="" id="">
+                            <label for="title">Enter Title</label>
+                            <input class="form-control" type="text" name="title" id="title">
                         </div>
                         <div class="form-group mt-3">
-                            <label for="">Enter Description</label>
-                            <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                            <label for="description">Enter Description</label>
+                            <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
                         </div>
                         <button class="btn btn-primary mt-3 col-md-12" type="submit">Save</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

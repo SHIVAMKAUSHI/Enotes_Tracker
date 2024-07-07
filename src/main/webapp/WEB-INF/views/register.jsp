@@ -41,6 +41,7 @@
                         </div>
                         <button class="btn btn-primary mt-3 col-md-12" type="submit">Register</button>
 
+
                     </form>
                 </div>
             </div>
